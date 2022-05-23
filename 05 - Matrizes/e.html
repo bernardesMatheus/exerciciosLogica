@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var listaDeProdutos = [
+        ['1',"Sabão", 12.99, 0],
+        ['2', "Carne", 1699.99, 0],
+        ['3', "Ovos", 20.00, 0],
+        ['4', "Arroz", 9.90, 0],
+        ['5', "Feijão", 8.90, 0]
+    ]
+    
+    var total
+
+    do{
+        //Monstramos o menu visual de produtos
+        var menuDeProdutos = "Código | Produto | Valor | Quantidade\n"
+        for(var i=0; i<listaDeProdutos.length; i++){
+            for(var j=0; j<listaDeProdutos[i].length; j++){
+                menuDeProdutos += (listaDeProdutos[i][j])
+                if(j!= (listaDeProdutos[i].length-1)){
+                    menuDeProdutos += " | "
+                }
+            }
+            menuDeProdutos += "\n" 
+        }
+
+        var codigoProduto = prompt("Informe o código do produto\n" + menuDeProdutos)
+        for(var i=0; i<listaDeProdutos.length; i++){
+            if(listaDeProdutos[i][0] == codigoProduto){
+                var qtdProduto = parseInt(prompt("Informe a quantidade de " + listaDeProdutos[i][1] + ":"))
+                listaDeProdutos[i][3] += qtdProduto
+            }
+        }     
+    }while(codigoProduto != 0)
+
+    var resultado = ""
+    var totalCompra = 0
+    for(var i=0; i<listaDeProdutos.length; i++){
+        resultado += listaDeProdutos[i][1] + " -> " + " Qtd: " + listaDeProdutos[i][3] + " Valor Unitário: " + listaDeProdutos[i][2] + " Valor Gasto: " + (listaDeProdutos[i][3] * listaDeProdutos[i][2]).toFixed(2) + "\n"
+        totalCompra += listaDeProdutos[i][3] * listaDeProdutos[i][2]
+    }
+    alert(resultado + "TOTAL DA COMPRA: R$" + totalCompra.toFixed(2))
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

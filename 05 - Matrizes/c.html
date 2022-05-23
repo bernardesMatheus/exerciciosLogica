@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var dados = [
+        [],
+        [],
+        [],
+        []
+    ]
+
+    var soma = 0
+    var media = 0
+
+    for(var i = 0; i < 4; i++){
+        for(var j = 0; j < 4; j++){
+            //dados[i].push(parseInt(prompt("Informe o valor da Linha " + (i+1) + " e Coluna " + (j+1) + ":")))
+            dados[i][j] = parseInt(prompt("Informe o valor da Linha " + (i+1) + " e Coluna " + (j+1) + ":"))
+
+            soma += dados[i][j]
+        }
+    }
+
+    media = soma/(dados.length*dados.length)
+    
+    document.write("Matriz 4x4: <br>" + dados.join("<br>"))
+    document.write("<br>")
+    document.write("Soma: " + soma)
+    document.write("<br>")
+    document.write("Média: " + media.toFixed(2))
+
+    
+</script>
+<body>
+    
+</body>
+</html>

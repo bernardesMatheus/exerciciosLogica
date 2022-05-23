@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var cardapio = ["Pizza", "Hamburguer", "Sushi", "Coxinha", "Churrasco", "Risoto", "Hot-Dog", "Feijoada", "Yakisoba", "Macarronada"]
+
+    var itemsPedido = [] //nota fiscal
+
+    var valorTotal = 0
+    
+    var mensagemCardapio = `
+        ==== Escolha um item do Menu ====
+        [1] Pizza - 10,90
+        [2] Hamburguer - 7,45
+        [3] Sushi - 39,90
+        [4] Coxinha - 5,90
+        [5] Churrasco - 79,80
+        [6] Risoto - 12,40
+        [7] Hot-Dog - 7,99
+        [8] Feijoada - 12,99
+        [9] Yakisoba - 22,00
+        [10] Macarronada - 11,50
+        [11] Sair
+    `
+    do{
+        var codigoEscolha =  prompt(mensagemCardapio)
+
+        if(codigoEscolha==11) break;
+        switch(codigoEscolha){
+            case '1':
+                itemsPedido.push("Pizza")
+                valorTotal+=10.9
+            break
+            case '2':
+                itemsPedido.push("Hamburguer")
+                valorTotal+=7.45
+            break
+            case '3':
+                itemsPedido.push("Sushi")
+                valorTotal+=39.90
+            break
+            case '4':
+                itemsPedido.push("Coxinha")
+                valorTotal+=5.90
+            break
+            case '5':
+                itemsPedido.push("Churrasco")
+                valorTotal+=79.80
+            break
+            case '6':
+                itemsPedido.push("Risoto")
+                valorTotal+=12.40
+            break
+            case '7':
+                itemsPedido.push("Hot-Dog")
+                valorTotal+=7.99
+            break
+            case '8':
+                itemsPedido.push("Feijoada")
+                valorTotal+=12.99
+            break
+            case '9':
+                itemsPedido.push("Yakisoba")
+                valorTotal+=22.00
+            break
+            case '10':
+                itemsPedido.push("Macarronada")
+                valorTotal+=11.50
+            break
+            default:
+                alert("Informe um valor válido!")
+        }
+
+    }while(codigoEscolha != 11)
+
+    document.write("Os produtos Adquiridos foram respectivamente: <br>" + itemsPedido.join("<br>"))
+    document.write("<hr> <strong>TOTAL</strong>: " + valorTotal.toFixed(2))
+
+
+</script>
+<body>
+    
+</body>
+</html>

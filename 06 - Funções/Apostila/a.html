@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function acao(operacao){
+        var n1 = parseFloat(document.getElementById("numero1").value)
+        var n2 = parseFloat(document.getElementById("numero2").value)
+
+        var resultado;
+        
+        switch(operacao){
+            case "soma":
+                resultado = soma(n1, n2)
+                break
+            case "subtrai":
+                resultado = subtracao(n1, n2)
+                break
+            case "multiplica":
+                resultado = multiplicacao(n1, n2)
+                break
+            case "divide":
+                resultado = divisao(n1, n2)
+                break
+            default:
+                alert("Operação inválida")
+                return
+        }
+        alert("O resultado é " + resultado.toFixed(2))
+    }
+
+    function soma(n1, n2){
+        return n1 + n2
+    }
+
+    function subtracao(n1, n2){
+        return n1 - n2
+    }
+
+    function multiplicacao(n1, n2){
+        return n1 * n2
+    }
+
+    function divisao(n1, n2){
+        return n1 / n2
+    }   
+
+</script>
+<body>
+    <form action="">
+        <input id="numero1" type="text" placeholder="Primeiro Numero">
+        <input id="numero2" type="text" placeholder="Segundo Numero">
+
+        <input type="button" value="Soma" onclick="acao('soma')">
+        <input type="button" value="Subtração" onclick="acao('subtrai')">
+        <input type="button" value="Multipicação" onclick="acao('multiplica')">
+        <input type="button" value="Divisão" onclick="acao('divide')">
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    alert("Informe 5 números")
+    var valores = []
+    var maior = Number.MIN_VALUE; // valor muiito negativo
+    var menor = Number.MAX_VALUE; //valor altíssimo
+
+    for(var i=0; i<5; i++){
+        valores[i] = parseInt(prompt("Informe o " + (i+1) + "º valor: "))
+        if(valores[i] >= maior){
+            maior = valores[i]
+        }
+        if(valores[i] <= menor){
+            menor = valores[i]
+        }
+    }
+    alert("Maior: " + maior)
+    alert("Menor: " + menor)
+
+</script>
+<body>
+    
+</body>
+</html>

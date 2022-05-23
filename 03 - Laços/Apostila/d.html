@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var linha = 5
+    var coluna = 5
+
+    //Exemplo com While
+
+    while(coluna > 0){
+        while(linha > 0){
+            document.write(linha + " ")
+            linha --
+        }
+        document.write("<br>")
+        coluna--
+        linha = coluna;
+    }
+
+    document.write("<hr>")
+    
+    //Exemplo com For
+
+    for(var i=5, j=5; i>0; i--){
+        j=i
+        for(; j>0; j--){
+            document.write(j + " ")
+        }
+    
+        document.write("<br>")
+    }
+</script>
+<body>
+    
+</body>
+</html>

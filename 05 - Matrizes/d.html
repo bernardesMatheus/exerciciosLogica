@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var mensagemInicial = `
+        ==== Agenda de Contatos ====
+        [1] Cadastrar Contato
+        [2] Selecionar Contatos
+        [3] Alterar Contato
+        [4] Remover Contato
+        [5] Sair do Sistema
+    `
+
+    var contatosCadastrados = []
+
+    do{
+        var selecaoInicial = prompt(mensagemInicial)
+
+        switch(selecaoInicial){
+            case '1':
+                var novoContato = prompt("Informe o nome do contato que deseja cadastrar: ")
+                if(novoContato.length > 0){
+                    contatosCadastrados.push(novoContato)
+                }else{
+                    alert("Informe um valor não nulo!")
+                }
+                break
+            case '2':
+                var listaContatos = "os contatos cadastrados são: \n"
+                for(var i=0; i<contatosCadastrados.length; i++){
+                    listaContatos += ("["+ (i+1) + "] - " + contatosCadastrados[i] + "\n")
+                }
+                
+                var contatoSelecionado = prompt("Selecione um dos contatos, " + listaContatos)
+                if(contatoSelecionado < 1 || contatoSelecionado > contatosCadastrados.length){
+                    alert("Informe um contato válido")
+                }else{
+                    alert("Você selecionou o contato: " + contatosCadastrados[contatoSelecionado-1])
+                }
+                break
+            case '3':
+                var listaContatos = "Escolha um dos contatos que deseja ALTERAR:  \n"
+                for(var i=0; i<contatosCadastrados.length; i++){
+                    listaContatos += ("["+ (i+1) + "] - " + contatosCadastrados[i] + "\n")
+                }
+                var indiceContato = parseInt(prompt(listaContatos))-1
+                var novoContato = prompt("Informe o novo nome do contato '" + contatosCadastrados[indiceContato] + "':")
+                contatosCadastrados[indiceContato] = novoContato
+                break
+            case '4':
+                var listaContatos = "Escolha um dos contatos que deseja REMOVER:  \n"
+                for(var i=0; i<contatosCadastrados.length; i++){
+                    listaContatos += ("["+ (i+1) + "] - " + contatosCadastrados[i] + "\n")
+                }
+                contatosCadastrados.splice((parseInt(prompt(listaContatos))-1), 1) 
+                break    
+            case '5':
+                alert("Saindo do sistema...")
+                break 
+            default:
+                alert("Informe um comando válido!")
+        }
+    }while(selecaoInicial!='5')
+        
+    
+</script>
+<body>
+    
+</body>
+</html>

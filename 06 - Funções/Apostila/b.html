@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos</title>
+
+    <script>
+        var produtos = [
+            ["Notebook", "Lenovo", 2499, 1]
+        ]
+
+        // Cadastro
+        function cadastrar(){
+            // Obter o campo de texto
+            var nome = document.getElementById("nome")
+            var marca = document.getElementById("marca")
+            var valor = document.getElementById("valor")
+            var quantidade = document.getElementById("quantidade")
+            
+            if (validaEntradas(nome, marca, valor, quantidade) == false){
+                return
+            } 
+            
+            // Cadastrar no vetor
+            produtos.push([nome.value, marca.value, valor.value, quantidade.value])
+
+            // Limpar os campos de texto
+            limpaCampos(nome, marca, valor, quantidade)
+
+            // Deixar o cursor no campo de texto
+            nome.focus()
+
+            // Atualizar listagem de cursos
+            listar()
+        }
+
+        function validaEntradas(nome, marca, valor, quantidade){
+            if(nome.value == "" || marca.value == "" || valor.value == "" || quantidade.value == ""){
+                alert("Preencha todos os campos!")
+                return false
+            } 
+        }
+
+        function limpaCampos(nome, marca, valor, quantidade){
+            nome.value = ""
+            marca.value = ""
+            valor.value = ""
+            quantidade.value = ""
+        }
+
+        function remover(){
+            // Obter o campo de texto
+            var nome = document.getElementById("nome")
+            var marca = document.getElementById("marca")
+            var valor = document.getElementById("valor")
+            var quantidade = document.getElementById("quantidade")
+
+            produtos.pop(produtos.value)
+
+            // Limpar o campo de texto
+            limpaCampos(nome, marca, valor, quantidade)
+
+            // Deixar o cursor no campo de texto
+            nome.focus()
+
+            // Atualizar listagem de cursos
+            listar()
+        }
+
+        // Listar todos os cursos cadastrados
+        function listar(){
+
+            // Obter o elemento listar
+            var listar = document.getElementById("listar")
+
+            // Limpar o elemento listar
+            listar.innerHTML = ""
+
+            // Listar os produtos
+            for(var i=0; i<produtos.length; i++){
+                for(var j=0; j<produtos[i].length; j++){
+                    var produtoImpresso =  produtos[i][j]
+                    
+                    if(j != 3){
+                        produtoImpresso += " - "
+                    }
+
+                    listar.innerHTML += produtoImpresso
+                }
+                listar.innerHTML += "<br>"
+            }
+        }
+
+    </script>
+</head>
+<body onload="listar()">
+
+    <input type="text" placeholder="Nome do Produto" id="nome">
+    <input type="text" placeholder="Marca" id="marca">
+    <input type="number" min="1" placeholder="Valor" id="valor">
+    <input type="number" placeholder="Quantidade" id="quantidade">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="remover()">Remover</button>
+
+    <p id="listar"> </p>
+    
+</body>
+</html>

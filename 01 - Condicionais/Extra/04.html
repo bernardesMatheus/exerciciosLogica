@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var n1 = parseFloat(prompt("Informe a nota 1: "))
+    var n2 = parseFloat(prompt("Informe a nota 2: "))
+    var n3 = parseFloat(prompt("Informe a nota 3: "))
+    var nFaltas =  parseInt(prompt("Informe o número de faltas: "))
+    var media = (n1+n2+n3)/3
+
+    if(nFaltas>15 || media < 5){
+        alert("Reprovado!")
+    }else if(media >=5 && media <=7){
+        alert("Prova final!")
+    }else{
+        alert("Aprovado!")
+    }
+</script>
+<body>
+    
+</body>
+</html>

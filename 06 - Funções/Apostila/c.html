@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script>
+    var mensagemInicial = `
+        Estoque de Produtos
+        [1] Cadastrar Produto
+        [2] Selecionar Produtos
+        [3] Alterar Produtos
+        [4] Excluir Produto
+        [5] Pesquisar Produtos Via Nome
+        [6] Sair do Sistema
+    `
+
+    do{
+        var selecaoInicial = prompt(mensagemInicial)
+
+        switch(selecaoInicial){
+            case '1':
+                var nomeProduto = prompt("Informe o nome do produto que deseja cadastrar: ") 
+                var produtoDuplicado = verificaSeProdutoJaExiste(produtosCadastrados, nomeProduto)
+                if(produtoDuplicado == true){
+                    alert("Esse produto já foi cadastrado anteriormente em nosso estoque.")
+                }else{
+                    produtosCadastrados = cadastrarProduto(nomeProduto, produtosCadastrados)
+                }
+                break
+            case '2':
+                listarProdutos(produtosCadastrados);
+                break
+            case '3':
+                var menuDeProdutos = exibeProdutos(produtosCadastrados)
+                var produtoParaAlterar = prompt("Escolha um dos produtos que deseja ALTERAR:  \n" + menuDeProdutos)
+                
+                produtosCadastrados = alterarProduto(produtosCadastrados, produtoParaAlterar)
+                break
+            case '4':
+                var menuDeProdutos = exibeProdutos(produtosCadastrados)
+                var produtoParaExcluir = prompt("Escolha um dos produtos que deseja REMOVER:  \n" + menuDeProdutos)
+
+                produtosCadastrados = removerProduto(produtosCadastrados, produtoParaExcluir)
+                break    
+            case '5':
+                var nomeDoProduto = prompt("Informe o nome do produto a ser pesquisado: ")
+                pesquisarProduto(produtosCadastrados, nomeDoProduto)
+                break
+            case '6':
+                alert("Saindo do sistema...")
+                break 
+            default:
+                alert("Informe um comando válido!")
+        }
+    }while(selecaoInicial!='6')
+        
+    
+    function cadastrarProduto(produto, listaDeProdutos){
+
+        if(produto.length > 0){
+            listaDeProdutos.push(produto)
+        }else{
+            alert("Informe um valor não nulo!")
+        }
+
+        return listaDeProdutos
+    }
+
+    function exibeProdutos(listaDeProdutos){
+        var menuProdutos = ""
+        for(var i=0; i<produtosCadastrados.length; i++){
+            menuProdutos += ("["+ (i+1) + "] - " + produtosCadastrados[i] + "\n")
+        }
+        return menuProdutos
+    }
+
+    function listarProdutos(listaDeProdutos){
+        var menuDeProdutosCadastrados = exibeProdutos()
+        var mensagemDeProdutosCadastrados = "os produtos cadastrados são: \n" + menuDeProdutosCadastrados
+                
+        var produtoSelecionado = prompt("Selecione um dos produtos, " + mensagemDeProdutosCadastrados)
+
+        if(produtoSelecionado < 1 || produtoSelecionado > listaDeProdutos.length){
+            alert("Informe um produto válido")
+        }else{
+            alert("Você selecionou o produto: " + listaDeProdutos[produtoSelecionado-1])
+        }
+    }
+
+    function alterarProduto(listaDeProdutos, codigoProduto){
+        var novoProduto = prompt("Informe o novo nome do produto '" + listaDeProdutos[codigoProduto-1] + "':")
+        listaDeProdutos[codigoProduto-1] = novoProduto
+
+        return listaDeProdutos
+    }
+
+    function removerProduto(listaDeProdutos, codigoProduto){
+        listaDeProdutos.splice(codigoProduto-1, 1) 
+
+        return listaDeProdutos
+    }
+
+    function pesquisarProduto(listaDeProdutos, nomeDoProduto){
+        var produtoFoiEncontrado = false
+        for(var i=0; i<listaDeProdutos.length; i++){
+            if(listaDeProdutos[i] == nomeDoProduto){
+                produtoFoiEncontrado = true
+            }
+        }
+
+        if(produtoFoiEncontrado == true){
+            alert("O produto " + nomeDoProduto + " foi encontrado em nosso estoque.")
+        }else{
+            alert("Produto não encontrado")
+        }
+    }
+
+    function verificaSeProdutoJaExiste(listaDeProdutos, nomeDoProduto){
+        for(var i=0; i<listaDeProdutos.length; i++){
+            if(listaDeProdutos[i] == nomeDoProduto){
+                return true
+            }
+        }
+
+        return false
+    }
+</script>
+</head>
+<body>
+
+</body>
+</html>

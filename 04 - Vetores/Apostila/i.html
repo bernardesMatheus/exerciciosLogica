@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var mensagemCrud = `
+        ==== Escolha um item do Menu ====
+        [1] Cadastrar Curso
+        [2] Selecionar Cursos
+        [3] Remover Curso
+        [4] Sair do Sistema
+    `
+    var cursosCadastrados = []
+
+    do{
+        var selecaoInicial = prompt(mensagemCrud)
+
+        switch(selecaoInicial){
+            case '1':
+                var comandoMenu = prompt("Informe o nome do curso que deseja cadastrar: ")
+                
+                if(comandoMenu.length > 0){
+                    cursosCadastrados.push(comandoMenu)
+                }else{
+                    alert("Informe um valor não nulo!")
+                }
+                break
+            case '2':
+                var comandoMenu = "Os cursos cadastrados são: \n"
+                for(var i=0; i<cursosCadastrados.length; i++){
+                    comandoMenu += ("["+ (i+1) + "] - " + cursosCadastrados[i] + "\n")
+                }
+                alert(comandoMenu)
+                break
+            case '3':
+                var comandoMenu = "Escolha um dos cursos que deseja remover:  \n"
+                for(var i=0; i<cursosCadastrados.length; i++){
+                    comandoMenu += ("["+ (i+1) + "] - " + cursosCadastrados[i] + "\n")
+                }
+                cursosCadastrados.splice((parseInt(prompt(comandoMenu))-1), 1) 
+                break
+            case '4':
+                alert("Saindo do sistema...")
+                break    
+            default:
+                alert("Informe um comando válido!")
+        }
+    }while(selecaoInicial!='4')
+
+
+</script>
+<body>
+    
+</body>
+</html>

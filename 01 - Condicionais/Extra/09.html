@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var salarioInicial =  parseFloat(prompt("Informe o seu rendimento mensal: "))
+    var aliquota;
+
+    if(salarioInicial > 0 && salarioInicial <= 1903.98){
+        aliquota = 0
+    }else if( salarioInicial > 1903.98 && salarioInicial <= 2586.65){
+        aliquota = 0.075
+    }else if(salarioInicial > 2586.65 && salarioInicial <= 3751.05){
+        aliquota = 0.15
+    }else if(salarioInicial > 3751.05 && salarioInicial <= 4664.68){
+        aliquota = 0.225
+    }else{
+        aliquota = 0.275
+    }
+
+    var desconto = salarioInicial*aliquota
+    var salariofinal = salarioInicial - desconto
+
+    document.write("Salário inicial: " + salarioInicial  + "\n ")
+    document.write("| Alíquota enquadrada: " + (aliquota*100)/*.toFixed(2)*/ + "%\n ") //Importância do toFixed e caso NUBANK
+    document.write("| Valor descontado: " + desconto + "\n ")
+    document.write("| Salário final: " + salariofinal  + "\n ")
+</script>
+<body>
+    
+</body>
+</html>

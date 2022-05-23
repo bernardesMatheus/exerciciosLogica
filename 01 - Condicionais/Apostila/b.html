@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    //int, float, decimal ...
+
+    var valor1 = parseInt(window.prompt("Informe o valor 1: "))
+    var valor2 = parseInt(window.prompt("Informe o valor 2:"))
+    var resultado;
+
+    if(valor1 == valor2) {
+        resultado = valor1+valor2;
+        document.write("As entradas são iguais, portanto teremos uma soma entre " + valor1 + " e " + valor2)
+    }else{
+        resultado = valor1*valor2;
+        document.write("As entradas são iguais, portanto teremos uma multiplicação entre " + valor1 + " e " + valor2)
+    }
+
+    document.write(", resultando em: " + resultado)
+</script>
+<body>
+    
+</body>
+</html>

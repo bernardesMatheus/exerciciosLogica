@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    alert("Informe 7 números")
+
+    var valores = []
+    var soma = 0
+    var media = 0
+    var numerosMaioresQueMedia = []
+
+    for(var i=0; i<7; i++){
+        valores[i] = parseInt(prompt("Informe o " + (i+1) + "º valor: "))
+        soma+=valores[i]
+    }
+    media = soma/7
+
+    for(var i=0; i<7; i++){
+        if(valores[i]>=media){
+            numerosMaioresQueMedia.push(valores[i])
+        }
+    }
+    
+    alert("Soma: " + soma)
+    alert("Media: " + media)
+    alert("Números maiores que a média: " + numerosMaioresQueMedia)
+</script>
+<body>
+    
+</body>
+</html>

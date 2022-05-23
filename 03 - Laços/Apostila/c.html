@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 07</title>
+
+    <script>
+        var menu = "*MENU*\n"
+        menu+= "1) Alessandra\n"
+        menu+= "2) Caio\n"
+        menu+= "3) Geraldo\n"
+        menu+= "4) Talita\n"
+        menu+= "5) Sair\n"
+
+        var alessandra = 0
+        var caio = 0
+        var geraldo = 0
+        var talita = 0
+
+        var codigo
+
+        do{
+            codigo = parseInt(prompt(menu))
+
+            switch (codigo) {
+                case 1:
+                    alessandra++  
+                break
+
+                case 2:
+                    caio++
+                break
+
+                case 3:
+                    geraldo++   
+                break
+
+                case 4:
+                    talita++   
+                break
+
+                default:
+                    alert("Informe um código válido!")
+            }
+
+        }while(codigo != 5)
+
+        document.write("Alessandra: "+alessandra+"<br>")
+        document.write("Caio: "+caio+"<br>")
+        document.write("Geraldo: "+geraldo+"<br>")
+        document.write("Talita: "+talita+"<br>")
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

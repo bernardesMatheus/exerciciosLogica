@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var tipoConversao = prompt(`
+            Informe o tipo de conversão:\n 
+            [1] Real p/ Dólar\n 
+            [2] Dólar p/ Real\n 
+            [3] Real p/ Euro\n 
+            [4] Euro p/ Real
+        `)
+    var valorMonetario = parseFloat(prompt("Informe a quantia monetária a ser convertida: "))
+
+    switch(tipoConversao){
+        case "1":
+            alert("R$" + valorMonetario + " é equivalente a " + ((valorMonetario*0.2).toFixed(2)) + " Dólares")           
+            break;
+        case "2":
+            alert("U$" + valorMonetario + " é equivalente a " + ((valorMonetario*5.03).toFixed(2)) + " Reais")   
+            break;        
+        case "3":
+            alert("R$" + valorMonetario + " é equivalente a " + ((valorMonetario*0.19).toFixed(2)) + " Euros")           
+            break;
+        case "4":
+            alert("€" + valorMonetario + " é equivalente a " + ((valorMonetario*5.3).toFixed(2)) + " Reais")    
+            break;
+        default:
+            alert("Informe uma conversão válida!")
+    }
+</script>
+<body>
+    
+</body>
+</html>

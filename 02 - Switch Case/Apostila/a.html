@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var temperaturaInicial = 25
+    var tipoConversao = prompt("Informe o tipo de conversão: \n [1] Celsius p/ Fahrenheit \n [2] Fahrenheit p/ Celsius")
+    var temperaturaConvertida;
+
+    //Modo Convencional
+
+    // if(tipoConversao == '1'){
+    //     temperaturaConvertida = (temperaturaInicial * 1.8) + 32
+    // }else if(tipoConversao == '2'){
+    //     temperaturaConvertida = (temperaturaInicial -32)/1.8
+
+    // }else{
+    //     alert("Informe um tipo de conversão válido!")
+    // }
+    
+    //Modo Elegante
+    switch(tipoConversao){
+        case '1':
+            temperaturaConvertida = (temperaturaInicial * 1.8) + 32
+            break;
+        case '2':
+            temperaturaConvertida = (temperaturaInicial -32)/1.8
+            break;
+        default:
+            alert("Informe um tipo de conversão válido!")
+    }
+
+    alert(temperaturaConvertida)
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var ladoEsquerdo = prompt("Informe o lado L1: ")
+    var ladoDireito = prompt("Informe o lado L2: ")
+    var ladoInferior = prompt("Informe o lado L3: ")
+
+    if(ladoEsquerdo == ladoDireito && ladoEsquerdo == ladoInferior){
+        alert("Equilátero!")
+    }else{
+        if(ladoEsquerdo == ladoDireito || ladoEsquerdo == ladoInferior || ladoDireito == ladoInferior){
+            alert("Escaleno!")
+        }else{
+            alert("Isóceles!")
+        }
+    }
+</script>
+<body>
+    
+</body>
+</html>

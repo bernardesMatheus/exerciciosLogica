@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var nomeProduto = prompt("Informe o nome do produto: ")
+    var valorProduto = parsefloat(prompt("Informe o valor do produto: "))
+    var segmentoProduto = prompt("Informe o segmento do produto: ")
+    var valorFinal = 0;
+    var desconto = 0;
+
+    switch (segmentoProduto) {
+        case "Vestuário":
+            desconto = 0.05
+            alert("Desconto de 5%")
+            break;
+        case "Eletrônico":
+            desconto = 0.08
+            alert("Desconto de 8%")
+            break;
+        case "Alimentício":
+            desconto = 0.1
+            alert("Desconto de 10%")
+            break;
+        default: 
+            alert("Sem desconto!")
+    }
+
+    alert("Valor final: R$" + (valorFinal - (valorFinal * desconto)).toFixed(2))
+</script>
+<body>
+    
+</body>
+</html>

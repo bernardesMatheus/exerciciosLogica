@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var mensagem = "Escolha o número do pedido"
+    mensagem += "\n\n1) Pizza"
+    mensagem += "\n2) Pão de Queijo"
+    mensagem += "\n3) Macarrão"
+
+    var codigoProduto = window.prompt(mensagem)
+    
+    // if(codigoProduto < 1 || codigoProduto > 3){
+    //     window.alert("Produto não existe!")
+    // }
+    if(codigoProduto != 1 && codigoProduto != 2 && codigoProduto != 3){
+        window.alert("Produto não existe!")
+        object.reload(forcedReload);
+    }
+
+    var valorPago = parseFloat(window.prompt("Informa a quantia paga: "))
+    var troco;
+    var tipoLanche;
+
+    if(codigoProduto == 1){
+        lanche = "Pizza"
+        troco = valorPago-12
+    }else if(codigoProduto == 2){
+        troco = valorPago-4
+        lanche = "Pão de queijo"
+    }else if(codigoProduto == 3){
+        lanche = "Macarrão"
+        troco = valorPago-16
+    }
+
+    if(troco < 0){
+        window.alert("Pagamento inferior ao valor do lanche!")
+    }else{
+        window.alert("Você pediu o lanche de código " + codigoProduto + " corresponde à: " + lanche);
+        if(troco == 0){
+            window.alert("Você pagou R$" + valorPago + " e não receberá troco!")
+        }else{
+            window.alert("Você pagou R$" + valorPago + " e receberá R$" + troco + "  de troco.")
+        }
+    }
+
+
+</script>
+<body>
+    
+</body>
+</html>

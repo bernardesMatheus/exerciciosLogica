@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var soma = 0
+    var valores = []
+    
+    // for(var i = 0; i <5; i++) {
+    //     valores.push(parseInt((prompt("Informe o valor " + (i+1)))))
+    //     soma += valores[i]
+    // }
+
+    valores.push(parseInt(prompt("Valor 01: ")))
+    valores.push(parseInt(prompt("Valor 02: ")))
+    valores.push(parseInt(prompt("Valor 03: ")))
+    valores.push(parseInt(prompt("Valor 04: ")))
+    valores.push(parseInt(prompt("Valor 05: ")))
+
+    for(var i = 0; i < valores.length; i++){
+        document.write("Valor " + (i+1) + " = " + valores[i] + "<br>")
+        soma += valores[i]
+    }
+    alert("Soma dos valores é: " + soma)
+</script>
+<body>
+    
+</body>
+</html>

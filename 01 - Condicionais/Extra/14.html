@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var a = parseFloat(prompt("Informe o valor de A: "))
+    var b = parseFloat(prompt("Informe o valor de B: "))
+    var c = parseFloat(prompt("Informe o valor de C: "))
+
+    var delta = (b*b)-(4*a*c)
+
+    if(delta < 0){
+        alert("Não possui raiz real!")
+        object.reload(forcedReload);
+    }else if( delta == 0 ){
+        alert("Possui uma raiz real!")
+    }else{
+        alert("Possui duas raizes reais!")
+    }
+
+    var x1 = ((-b + Math.sqrt(delta))/2*a).toFixed(2)
+    var x2 = ((-b - Math.sqrt(delta))/2*a).toFixed(2)
+    
+    alert("Raiz 1 = " + x1 + " Raiz 2 = " + x2)
+</script>
+<body>
+    
+</body>
+</html>
