@@ -17,6 +17,10 @@
         [6] Sair do Sistema
     `
 
+    var produtosCadastrados = [
+        ["Notebook", "Lenovo", 249.75, 1]
+    ]
+
     do{
         var selecaoInicial = prompt(mensagemInicial)
 
@@ -24,26 +28,43 @@
             case '1':
                 var nomeProduto = prompt("Informe o nome do produto que deseja cadastrar: ") 
                 var produtoDuplicado = verificaSeProdutoJaExiste(produtosCadastrados, nomeProduto)
+
                 if(produtoDuplicado == true){
                     alert("Esse produto já foi cadastrado anteriormente em nosso estoque.")
                 }else{
-                    produtosCadastrados = cadastrarProduto(nomeProduto, produtosCadastrados)
+                    produtosCadastrados = cadastrarProduto(produtosCadastrados, nomeProduto)
                 }
+                
                 break
             case '2':
                 listarProdutos(produtosCadastrados);
                 break
             case '3':
+                if(produtosCadastrados.length == 0){
+                    alert("Não há produtos cadastrados em nosso estoque.")
+                }
+
                 var menuDeProdutos = exibeProdutos(produtosCadastrados)
-                var produtoParaAlterar = prompt("Escolha um dos produtos que deseja ALTERAR:  \n" + menuDeProdutos)
-                
-                produtosCadastrados = alterarProduto(produtosCadastrados, produtoParaAlterar)
+                var indiceProduto = prompt("Escolha um dos produtos que deseja ALTERAR:  \n" + menuDeProdutos)
+                var produtoDuplicado = verificaSeProdutoJaExiste(produtosCadastrados, indiceProduto)
+
+                if(produtoDuplicado == true){
+                    alert("Esse produto já foi cadastrado anteriormente em nosso estoque.")
+                }else{
+                    produtosCadastrados = alterarProduto(produtosCadastrados, indiceProduto)
+                }
+
                 break
             case '4':
-                var menuDeProdutos = exibeProdutos(produtosCadastrados)
-                var produtoParaExcluir = prompt("Escolha um dos produtos que deseja REMOVER:  \n" + menuDeProdutos)
+                if(produtosCadastrados.length == 0){
+                    alert("Não há produtos cadastrados em nosso estoque.")
+                }else{
+                    var menuDeProdutos = exibeProdutos(produtosCadastrados)
+                    var produtoParaExcluir = prompt("Escolha um dos produtos que deseja REMOVER:  \n" + menuDeProdutos)
 
-                produtosCadastrados = removerProduto(produtosCadastrados, produtoParaExcluir)
+                    produtosCadastrados = removerProduto(produtosCadastrados, produtoParaExcluir)
+                }
+
                 break    
             case '5':
                 var nomeDoProduto = prompt("Informe o nome do produto a ser pesquisado: ")
@@ -57,13 +78,22 @@
         }
     }while(selecaoInicial!='6')
         
-    
-    function cadastrarProduto(produto, listaDeProdutos){
+    function validaEntradas(nome, marca, valor, quantidade){
+        if(nome == '' || marca == '' || isNaN(valor) || isNaN(quantidade) || valor <=0 || quantidade <= 0){
+            return false
+        }
+        return true
+    }
 
-        if(produto.length > 0){
-            listaDeProdutos.push(produto)
+    function cadastrarProduto(listaDeProdutos, nome){
+        var marca = prompt("Informe o marca do produto que deseja cadastrar: ")
+        var valor = parseFloat(prompt("Informe o valor do produto que deseja cadastrar: "))
+        var quantidade = parseInt(prompt("Informe a quantidade do produto que deseja cadastrar: "))
+
+        if(validaEntradas(nome, marca, valor, quantidade) == true){
+            listaDeProdutos.push([nome, marca, valor.toFixed(2), quantidade])
         }else{
-            alert("Informe um valor não nulo!")
+            alert("Informe valores válidos!")
         }
 
         return listaDeProdutos
@@ -91,8 +121,15 @@
     }
 
     function alterarProduto(listaDeProdutos, codigoProduto){
-        var novoProduto = prompt("Informe o novo nome do produto '" + listaDeProdutos[codigoProduto-1] + "':")
-        listaDeProdutos[codigoProduto-1] = novoProduto
+        var novoNome = prompt("Informe o novo nome do produto '" + listaDeProdutos[codigoProduto-1] + "':")
+        var novaMarca = prompt("Informe a nova marca do produto: ")
+        var novoValor = parseFloat(prompt("Informe o novo valor do produto: "))
+        var novaQuantidade = parseInt(("Informe a nova quantidade do produto: "))
+        
+        listaDeProdutos[codigoProduto-1][0] = novoNome
+        listaDeProdutos[codigoProduto-1][1] = novaMarca
+        listaDeProdutos[codigoProduto-1][2] = novoValor
+        listaDeProdutos[codigoProduto-1][3] = novaQuantidade
 
         return listaDeProdutos
     }
@@ -106,7 +143,7 @@
     function pesquisarProduto(listaDeProdutos, nomeDoProduto){
         var produtoFoiEncontrado = false
         for(var i=0; i<listaDeProdutos.length; i++){
-            if(listaDeProdutos[i] == nomeDoProduto){
+            if(listaDeProdutos[i][0] == nomeDoProduto){
                 produtoFoiEncontrado = true
             }
         }
@@ -120,13 +157,14 @@
 
     function verificaSeProdutoJaExiste(listaDeProdutos, nomeDoProduto){
         for(var i=0; i<listaDeProdutos.length; i++){
-            if(listaDeProdutos[i] == nomeDoProduto){
+            if(listaDeProdutos[i][0] == nomeDoProduto){
                 return true
             }
         }
 
         return false
     }
+
 </script>
 </head>
 <body>
