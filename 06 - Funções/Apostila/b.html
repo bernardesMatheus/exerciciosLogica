@@ -3,90 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos</title>
+    <title>Agenda de Contatos</title>
 
     <script>
-        var produtos = [
-            ["Notebook", "Lenovo", 2499, 1]
+        //Inicializamos a agenda com um contato
+        var contatos = [
+            ["Maria", "maria@gmail.com", 47, "Indaial"]
         ]
 
-        // Cadastro
-        function cadastrar(){
-            // Obter o campo de texto
+        //Efetua o cadastro de um contato na agenda
+        function cadastraContato(){
+            // Obter os campos de texto do HTML
+
             var nome = document.getElementById("nome")
-            var marca = document.getElementById("marca")
-            var valor = document.getElementById("valor")
-            var quantidade = document.getElementById("quantidade")
+            var email = document.getElementById("email")
+            var idade = document.getElementById("idade")
+            var cidade = document.getElementById("cidade")
             
-            if (validaEntradas(nome, marca, valor, quantidade) == false){
+            if (validaEntradas(nome, email, idade, cidade) == false){
                 return
             } 
             
-            // Cadastrar no vetor
-            produtos.push([nome.value, marca.value, valor.value, quantidade.value])
+            contatos.push([nome.value, email.value, idade.value, cidade.value])
 
-            // Limpar os campos de texto
-            limpaCampos(nome, marca, valor, quantidade)
+            limpaCampos(nome, email, idade, cidade)
 
-            // Deixar o cursor no campo de texto
             nome.focus()
-
-            // Atualizar listagem de cursos
-            listar()
+            listaContatos()
         }
 
-        function validaEntradas(nome, marca, valor, quantidade){
-            if(nome.value == "" || marca.value == "" || valor.value == "" || quantidade.value == ""){
+        //Verifica se as informações de entrada são válidas (não nulas ou vazias)
+        function validaEntradas(nome, email, idade, cidade){
+            if(nome.value == "" || email.value == "" || idade.value == "" || cidade.value == ""){   
                 alert("Preencha todos os campos!")
                 return false
             } 
         }
 
-        function limpaCampos(nome, marca, valor, quantidade){
+        //Limpa todos os campos do HTML
+        function limpaCampos(nome, email, idade, cidade){
             nome.value = ""
-            marca.value = ""
-            valor.value = ""
-            quantidade.value = ""
+            email.value = ""
+            idade.value = ""
+            cidade.value = ""
         }
 
-        function remover(){
+        function removeContato(){
             // Obter o campo de texto
             var nome = document.getElementById("nome")
-            var marca = document.getElementById("marca")
-            var valor = document.getElementById("valor")
-            var quantidade = document.getElementById("quantidade")
+            var email = document.getElementById("email")
+            var idade = document.getElementById("idade")
+            var cidade = document.getElementById("cidade")
 
-            produtos.pop(produtos.value)
+            contatos.pop()
 
-            // Limpar o campo de texto
-            limpaCampos(nome, marca, valor, quantidade)
-
-            // Deixar o cursor no campo de texto
+            limpaCampos(nome, email, idade, cidade)
             nome.focus()
-
-            // Atualizar listagem de cursos
-            listar()
+            listaContatos()
         }
 
-        // Listar todos os cursos cadastrados
-        function listar(){
+        function alteraContato(){
+            var nomeContato = prompt("Informe o nome do contato que deseja alterar: ")
+            var indicePropriedadeContato = prompt("Qual propriedade deseja alterar?\n[1] - Nome\n[2] - Email\n[3] - Idade\n[4] - Cidade")
+            var novoValorParaPropriedade = prompt("Informe o novo valor para a propriedade selecionada: ")
+            var contatoExiste = false
 
-            // Obter o elemento listar
+            for(var i=0; i<contatos.length; i++){
+                //Verificamos no nosso array de contatos se há um contato com o nome (coluna 0) que informamos via Prompt;
+                if(contatos[i][0] == nomeContato){
+                    contatoExiste = true;
+                    //Setamos o valor da propriedade selecionada pelo índice que informamos igual ao novo valor contido na variável novoValorParaPropriedade;
+                    contatos[i][indicePropriedadeContato-1] = novoValorParaPropriedade;
+                }
+            }
+
+            if(contatoExiste == false){
+                alert("Informe um contato válido.")
+            }
+
+            limpaCampos(nome, email, idade, cidade)
+            nome.focus()
+            listaContatos()
+        }
+
+        function selecionaContato(){
+            var nomeContato = prompt("Informe o nome do contato que deseja selecionar: ")
+            var contatoExiste = false
+
+            for(var i=0; i<contatos.length; i++){
+                if(contatos[i][0] == nomeContato){
+                    contatoExiste = true;
+                    alert("Você selecionou o contato: " + contatos[i][0] + "\nEmail: " + contatos[i][1] +"\nIdade: " + contatos[i][2] + "\nCidade: " + contatos[i][3]);
+                }
+            }
+
+            if(contatoExiste == false){
+                alert("Informe um contato válido.")
+            }
+        }
+
+        // Lista todos os contatos cadastrados
+        function listaContatos(){
             var listar = document.getElementById("listar")
 
-            // Limpar o elemento listar
+            //O innerHTML é responsável por escrever um texto qualquer em um elemento HTML referenciado, no caso o elemento com ID "listar" ao qual atribuímos à variável listar;
+
             listar.innerHTML = ""
 
-            // Listar os produtos
-            for(var i=0; i<produtos.length; i++){
-                for(var j=0; j<produtos[i].length; j++){
-                    var produtoImpresso =  produtos[i][j]
+            // Listar os contatos
+            for(var i=0; i<contatos.length; i++){
+                for(var j=0; j<contatos[i].length; j++){
+                    var contatoImpresso =  contatos[i][j]
                     
                     if(j != 3){
-                        produtoImpresso += " - "
+                        contatoImpresso += " - "
                     }
 
-                    listar.innerHTML += produtoImpresso
+                    listar.innerHTML += contatoImpresso
                 }
                 listar.innerHTML += "<br>"
             }
@@ -94,14 +127,16 @@
 
     </script>
 </head>
-<body onload="listar()">
+<body onload="listaContatos()">
 
-    <input type="text" placeholder="Nome do Produto" id="nome">
-    <input type="text" placeholder="Marca" id="marca">
-    <input type="number" min="1" placeholder="Valor" id="valor">
-    <input type="number" placeholder="Quantidade" id="quantidade">
-    <button onclick="cadastrar()">Cadastrar</button>
-    <button onclick="remover()">Remover</button>
+    <input type="text" placeholder="Nome" id="nome">
+    <input type="text" placeholder="e-mail" id="email">
+    <input type="number" min="1" placeholder="Idade" id="idade">
+    <input placeholder="Cidade" id="cidade">
+    <button onclick="cadastraContato()">Cadastrar</button>
+    <button onclick="selecionaContato()">Selecionar</button>
+    <button onclick="alteraContato()">Alterar</button>
+    <button onclick="removeContato()">Remover</button>
 
     <p id="listar"> </p>
     
